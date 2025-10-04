@@ -1,5 +1,5 @@
 # cloud-computing-ms-usuarios
-
+```mermaid
 erDiagram
     USUARIOS {
         int id_usuario PK
@@ -19,3 +19,5 @@ erDiagram
     }
 
     USUARIOS }o--|| ROLES : "tiene"
+
+```
