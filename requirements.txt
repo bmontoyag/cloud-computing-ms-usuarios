@@ -1,0 +1,7 @@
+fastapi
+mangum
+psycopg2-binary
+pydantic
+python-jose
+boto3
+uvicorn

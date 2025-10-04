@@ -1,23 +1,31 @@
-# cloud-computing-ms-usuarios
-```mermaid
-erDiagram
-    USUARIOS {
-        int id_usuario PK
-        string nombre
-        string email
-        string telefono
-        int rol_id FK
-        boolean estado
-        datetime fecha_creacion
-        string cognito_sub
-    }
+# Microservicio de Usuarios
 
-    ROLES {
-        int id_rol PK
-        string nombre_rol
-        string descripcion
-    }
+Gestión de usuarios y roles para el sistema de cotizaciones.
 
-    USUARIOS }o--|| ROLES : "tiene"
+## Arquitectura
+- FastAPI + AWS Lambda + API Gateway
+- Base de datos: Amazon Aurora (PostgreSQL)
+- Auth: AWS Cognito (futuro)
 
+## Ejecutar local
+```bash
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
 ```
+
+## Despliegue con SAM
+```bash
+sam build
+sam deploy --guided
+```
+
+## Variables de entorno
+Ver `.env.example` y configura estas variables en Lambda o localmentte.
+
+## Endpoints
+- GET /api/usuarios
+- POST /api/usuarios
+
+## Diagrama ER
+Ver `diagram_usuarios_er.md`.
