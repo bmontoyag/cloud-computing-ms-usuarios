@@ -14,10 +14,10 @@ Resources:
       Timeout: 30
       Environment:
         Variables:
-          DB_HOST: aurora-usuarios.xxxxx.us-east-1.rds.amazonaws.com
+          DB_HOST: database-1.cmezdivkaour.us-east-1.rds.amazonaws.com
           DB_NAME: postgres
-          DB_USER: admin
-          DB_PASS: TuClave
+          DB_USER: postgres
+          DB_PASS: Clave$$$123
       Events:
         ApiUsuarios:
           Type: Api
