@@ -1,12 +1,17 @@
+
 from fastapi import FastAPI
-from mangum import Mangum
-from app.routes.usuarios import router as usuarios_router
+from app.db import engine
+from app.models.base import Base
+from app.util.cors import add_cors
 
-app = FastAPI(
-    title="Microservicio de Usuarios",
-    version="1.0.0",
-    description="Gestión de cuentas de empleados y clientes para el sistema de cotizaciones"
-)
+app = FastAPI(title="Servicio API")
 
-app.include_router(usuarios_router, prefix="/api/usuarios", tags=["Usuarios"])
-handler = Mangum(app)
+# Crear tablas (solo demo)
+Base.metadata.create_all(bind=engine)
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+from app.routers import usuario
+app.include_router(usuario.router)
